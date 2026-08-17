@@ -1,0 +1,83 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Settings",
+    "description": "Global business info used across the whole website"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "businessName": {
+      "type": "string",
+      "default": "Car Poshish"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string",
+      "description": "International format with +, e.g. +923001112223"
+    },
+    "phoneDisplay": {
+      "type": "string",
+      "description": "Human-readable, e.g. 0300 111 2223"
+    },
+    "whatsapp": {
+      "type": "string",
+      "description": "wa.me format — digits only, no + and no leading 0"
+    },
+    "email": {
+      "type": "email"
+    },
+    "addressStreet": {
+      "type": "string"
+    },
+    "addressCity": {
+      "type": "string"
+    },
+    "addressRegion": {
+      "type": "string"
+    },
+    "addressPostalCode": {
+      "type": "string"
+    },
+    "addressCountry": {
+      "type": "string",
+      "default": "PK"
+    },
+    "geoLat": {
+      "type": "decimal"
+    },
+    "geoLng": {
+      "type": "decimal"
+    },
+    "mapQuery": {
+      "type": "string",
+      "description": "Search string used to build the embedded Google Map"
+    },
+    "hoursDisplay": {
+      "type": "string"
+    },
+    "hoursSpec": {
+      "type": "string",
+      "description": "schema.org format, e.g. Mo-Su 09:00-20:00"
+    },
+    "priceRange": {
+      "type": "string"
+    },
+    "facebookUrl": {
+      "type": "string"
+    },
+    "instagramUrl": {
+      "type": "string"
+    }
+  }
+}
