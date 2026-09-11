@@ -801,6 +801,82 @@ export interface ApiGalleryItemGalleryItem extends Schema.CollectionType {
   };
 }
 
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+    description: 'Shop product orders \u2014 cash on delivery or in-shop pickup, no online payment';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    orderNumber: Attribute.String & Attribute.Required & Attribute.Unique;
+    items: Attribute.JSON & Attribute.Required;
+    subtotal: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    fulfillmentMethod: Attribute.Enumeration<['pickup', 'delivery']> &
+      Attribute.Required;
+    deliveryZone: Attribute.String;
+    deliveryFee: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    total: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    customerName: Attribute.String & Attribute.Required;
+    customerPhone: Attribute.String & Attribute.Required;
+    deliveryAddress: Attribute.Text;
+    deliveryCity: Attribute.String;
+    notes: Attribute.Text;
+    paymentMethod: Attribute.String &
+      Attribute.DefaultTo<'Cash on delivery / pickup'>;
+    status: Attribute.Enumeration<
+      [
+        'pending',
+        'confirmed',
+        'ready',
+        'out_for_delivery',
+        'completed',
+        'cancelled'
+      ]
+    > &
+      Attribute.DefaultTo<'pending'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -952,6 +1028,8 @@ export interface ApiSiteSettingSiteSetting extends Schema.SingleType {
     priceRange: Attribute.String;
     facebookUrl: Attribute.String;
     instagramUrl: Attribute.String;
+    deliveryZones: Attribute.JSON;
+    freePickup: Attribute.Boolean & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1031,6 +1109,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::faq.faq': ApiFaqFaq;
       'api::gallery-item.gallery-item': ApiGalleryItemGalleryItem;
+      'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'api::service.service': ApiServiceService;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;

@@ -78,6 +78,15 @@
     },
     "instagramUrl": {
       "type": "string"
+    },
+    "deliveryZones": {
+      "type": "json",
+      "description": "Array of { label, fee } used on the checkout page, e.g. [{\"label\":\"Gulberg / Model Town / DHA\",\"fee\":150},{\"label\":\"Other areas in Lahore\",\"fee\":300}]. Approximates distance-based pricing by zone rather than a live distance calculation, so it works without a paid maps API — edit the fees here any time without a code change."
+    },
+    "freePickup": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether picking up from the shop is free (it should be — this just makes the Rs. 0 fee explicit rather than implied)"
     }
   }
 }

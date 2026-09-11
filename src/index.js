@@ -211,6 +211,15 @@ const SEED_SITE_SETTINGS = {
   priceRange: 'Rs. 800 – Rs. 8,000',
   facebookUrl: 'https://facebook.com/carposhish',
   instagramUrl: 'https://instagram.com/carposhish',
+  // Flat fee per zone approximates distance-based delivery pricing without
+  // needing a paid maps/distance API. Edit freely from Site Settings in
+  // the admin panel — no code change or redeploy needed.
+  deliveryZones: [
+    { label: 'Gulberg / Model Town / DHA', fee: 150 },
+    { label: 'Other areas within Lahore', fee: 300 },
+    { label: 'Outside Lahore (call to confirm)', fee: 600 },
+  ],
+  freePickup: true,
 };
 
 // Opens read-only public access (find/findOne) to each API so the Next.js
