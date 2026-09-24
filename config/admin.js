@@ -1,5 +1,16 @@
-// Same reasoning as config/server.js — dev-only fallbacks so this boots
-// with no .env present. Replace before deploying anywhere real.
+/**
+ * @param {{
+ *   env: {
+ *     (key: string, defaultValue?: string): string;
+ *     bool: (key: string, defaultValue?: boolean) => boolean;
+ *     int: (key: string, defaultValue?: number) => number;
+ *     float: (key: string, defaultValue?: number) => number;
+ *     array: (key: string, defaultValue?: string[]) => string[];
+ *     json: <T = unknown>(key: string, defaultValue?: T) => T;
+ *     date: (key: string, defaultValue?: string) => Date;
+ *   };
+ * }} strapi
+ */
 module.exports = ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET', 'devAdminJwtSecret-replaceBeforeDeploy'),
@@ -18,5 +29,6 @@ module.exports = ({ env }) => ({
   flags: {
     nps: false,
     promoteEE: false,
+    docLinks: env.bool('FLAG_DOC_LINKS', true),
   },
 });

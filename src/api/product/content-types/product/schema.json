@@ -31,12 +31,12 @@
     },
     "category": {
       "type": "enumeration",
-      "enum": ["Cleaning", "Accessories", "Exterior", "Interior"],
-      "default": "Exterior"
+      "enum": ["Cleaning & Detailing", "Interior Accessories", "Exterior Accessories"],
+      "default": "Cleaning & Detailing"
     },
     "icon": {
       "type": "enumeration",
-      "enum": ["droplet", "cloth", "sparkle", "wrench", "bulb", "shield", "tyre", "spray", "seat"],
+      "enum": ["droplet", "cloth", "sparkle", "wrench", "bulb", "shield", "tyre", "spray", "seat", "sun", "steering"],
       "default": "droplet"
     },
     "image": {

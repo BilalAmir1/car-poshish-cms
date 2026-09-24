@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "seat_cover_configs",
+  "info": {
+    "singularName": "seat-cover-config",
+    "pluralName": "seat-cover-configs",
+    "displayName": "Seat Cover Configurator",
+    "description": "Options and pricing for the custom seat cover configurator page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Custom Seat Covers"
+    },
+    "description": {
+      "type": "text"
+    },
+    "turnaroundNote": {
+      "type": "string",
+      "description": "e.g. \"Ready in 3-5 days\" — shown near the price"
+    },
+    "carTypes": {
+      "type": "json",
+      "required": true,
+      "description": "Array of { label, price }, e.g. [{\"label\":\"Hatchback\",\"price\":3500}]. price is the full set price for that car type."
+    },
+    "materials": {
+      "type": "json",
+      "required": true,
+      "description": "Array of { label, priceAdd, description }, e.g. [{\"label\":\"Leatherette\",\"priceAdd\":0,\"description\":\"Durable and easy to clean\"}]. priceAdd is added to (or subtracted from) the car type's base price."
+    },
+    "colors": {
+      "type": "json",
+      "required": true,
+      "description": "Array of { label, hex }, e.g. [{\"label\":\"Black\",\"hex\":\"#1a1a1a\"}]"
+    },
+    "stitchingOptions": {
+      "type": "json",
+      "description": "Array of { label, hex }. Use hex: null for a \"Matching\" option that follows the main color."
+    }
+  }
+}

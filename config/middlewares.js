@@ -1,4 +1,5 @@
 module.exports = [
+  'strapi::logger',
   'strapi::errors',
   'strapi::security',
   {
@@ -11,7 +12,6 @@ module.exports = [
     },
   },
   'strapi::poweredBy',
-  'strapi::logger',
   'strapi::query',
   'strapi::body',
   'strapi::session',
